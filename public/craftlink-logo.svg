@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- Background transparent -->
+  
+  <!-- C icon / arrow mark -->
+  <path d="M28 60 L60 20 L56 20 L22 62 L56 100 L60 100 Z" fill="url(#iconGrad)" stroke="none"/>
+  <path d="M44 44 L70 20 L66 20 L38 47 L38 73 L66 100 L70 100 L44 76" fill="url(#iconGrad2)" stroke="none" opacity="0.85"/>
+  
+  <!-- "Craft" text - white/silver -->
+  <text x="88" y="72" font-family="'Outfit', 'Inter', sans-serif" font-size="52" font-weight="800" fill="white" letter-spacing="-2">Craft</text>
+  
+  <!-- "link" text - teal gradient -->
+  <text x="242" y="72" font-family="'Outfit', 'Inter', sans-serif" font-size="52" font-weight="800" fill="url(#textGrad)" letter-spacing="-2">link</text>
+
+  <!-- Dot on "i" override with circle glow -->
+  <circle cx="281" cy="26" r="5" fill="url(#dotGrad)" filter="url(#glow)"/>
+
+  <!-- Tagline -->
+  <line x1="88" y1="88" x2="108" y2="88" stroke="url(#textGrad)" stroke-width="1.5"/>
+  <text x="116" y="92" font-family="'Outfit', 'Inter', sans-serif" font-size="11" font-weight="600" fill="url(#textGrad)" letter-spacing="3">FREELANCE</text>
+  <circle cx="192" cy="89" r="2" fill="url(#textGrad)"/>
+  <text x="200" y="92" font-family="'Outfit', 'Inter', sans-serif" font-size="11" font-weight="600" fill="url(#textGrad)" letter-spacing="3">CONNECT</text>
+  <circle cx="269" cy="89" r="2" fill="url(#textGrad)"/>
+  <text x="277" y="92" font-family="'Outfit', 'Inter', sans-serif" font-size="11" font-weight="600" fill="url(#textGrad)" letter-spacing="3">GROW</text>
+  <line x1="314" y1="88" x2="334" y2="88" stroke="url(#textGrad)" stroke-width="1.5"/>
+
+  <!-- Defs -->
+  <defs>
+    <linearGradient id="iconGrad" x1="20" y1="20" x2="70" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#00e5a8"/>
+      <stop offset="100%" stop-color="#00a87c"/>
+    </linearGradient>
+    <linearGradient id="iconGrad2" x1="38" y1="20" x2="70" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00e5a8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#006655" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="242" y1="0" x2="342" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00e5a8"/>
+      <stop offset="100%" stop-color="#00c896"/>
+    </linearGradient>
+    <radialGradient id="dotGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5a8"/>
+      <stop offset="100%" stop-color="#00c896"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>

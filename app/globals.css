@@ -1,0 +1,469 @@
+@import "tailwindcss";
+
+/* ============================================
+   CRAFTLINK — Premium Dark Emerald Theme
+   ============================================ */
+
+@layer base {
+  :root {
+    /* Typography */
+    --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Outfit', 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* === LIGHT MODE PALETTE === */
+    --bg-primary: #f0faf7;
+    --bg-secondary: #e6f5f0;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f5faf8;
+    --bg-elevated: #ffffff;
+    --bg-overlay: rgba(255, 255, 255, 0.85);
+
+    --text-primary: #0d1f1a;
+    --text-secondary: #2d5046;
+    --text-muted: #5a7a70;
+    --text-faint: #8aab9e;
+
+    --border-subtle: rgba(0, 120, 90, 0.12);
+    --border-medium: rgba(0, 120, 90, 0.22);
+    --border-strong: rgba(0, 120, 90, 0.45);
+
+    --accent-primary: #00c896;
+    --accent-secondary: #00a87c;
+    --accent-glow: rgba(0, 200, 150, 0.18);
+    --accent-glow-strong: rgba(0, 200, 150, 0.35);
+
+    --surface-glass: rgba(255, 255, 255, 0.7);
+    --surface-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+
+    --shadow-sm: 0 2px 8px rgba(0, 100, 70, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 100, 70, 0.12);
+    --shadow-lg: 0 8px 40px rgba(0, 100, 70, 0.18);
+    --shadow-glow: 0 0 30px rgba(0, 200, 150, 0.15);
+
+    --navbar-bg: rgba(240, 250, 247, 0.92);
+    --scrollbar-track: #e0f0ea;
+    --scrollbar-thumb: #a0c8bc;
+  }
+
+  .dark {
+    /* === DARK MODE PALETTE — Deep Charcoal + Emerald === */
+    --bg-primary: #080f0d;
+    --bg-secondary: #0d1a16;
+    --bg-card: #101e19;
+    --bg-card-hover: #142420;
+    --bg-elevated: #162820;
+    --bg-overlay: rgba(8, 15, 13, 0.9);
+
+    --text-primary: #e8f5f0;
+    --text-secondary: #a8d4c4;
+    --text-muted: #6aab94;
+    --text-faint: #3a6654;
+
+    --border-subtle: rgba(0, 200, 150, 0.08);
+    --border-medium: rgba(0, 200, 150, 0.15);
+    --border-strong: rgba(0, 200, 150, 0.35);
+
+    --accent-primary: #00e5a8;
+    --accent-secondary: #00c896;
+    --accent-glow: rgba(0, 229, 168, 0.12);
+    --accent-glow-strong: rgba(0, 229, 168, 0.25);
+
+    --surface-glass: rgba(16, 30, 25, 0.8);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 40px rgba(0, 229, 168, 0.1);
+
+    --navbar-bg: rgba(8, 15, 13, 0.92);
+    --scrollbar-track: #0d1a16;
+    --scrollbar-thumb: #1e4035;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, var(--accent-glow) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, var(--accent-glow) 0%, transparent 55%);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* ============================================
+   NOISE TEXTURE OVERLAY
+   ============================================ */
+.noise-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* ============================================
+   FINE GRID TEXTURE
+   ============================================ */
+.grid-texture {
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================================
+   GLASSMORPHISM CARDS
+   ============================================ */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-lg), var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   PREMIUM CARD
+   ============================================ */
+.premium-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md), 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   ACCENT GLOW EFFECTS
+   ============================================ */
+.glow-accent {
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 60px var(--accent-glow);
+}
+
+.glow-border {
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 12px var(--accent-glow), inset 0 0 12px var(--accent-glow);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.bg-accent {
+  background-color: var(--accent-primary);
+}
+
+/* ============================================
+   GRADIENT BACKGROUNDS
+   ============================================ */
+.bg-gradient-emerald {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+}
+
+.bg-gradient-hero {
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 0%, var(--accent-glow-strong) 0%, transparent 65%),
+    var(--bg-primary);
+}
+
+/* ============================================
+   ACCENT BUTTONS
+   ============================================ */
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #080f0d;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px var(--accent-glow-strong);
+}
+
+.btn-accent:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 25px var(--accent-glow-strong);
+  transform: translateY(-1px);
+}
+
+.btn-accent:active {
+  transform: scale(0.97);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-primary);
+  font-weight: 600;
+  border: 1px solid var(--border-medium);
+  border-radius: 9999px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-glow);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+.badge-success {
+  background: rgba(0, 200, 150, 0.12);
+  color: var(--accent-primary);
+  border: 1px solid rgba(0, 200, 150, 0.25);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-neutral {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+.input-field {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: var(--text-faint);
+}
+
+.input-field:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ============================================
+   DIVIDERS
+   ============================================ */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 5px var(--accent-glow);
+  }
+
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 20px var(--accent-glow-strong);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ============================================
+   LINE CLAMPS
+   ============================================ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   THEME TRANSITION
+   ============================================ */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Override transition for animated elements that shouldn't be affected */
+.no-theme-transition,
+.no-theme-transition * {
+  transition-property: none !important;
+}
+
+/* ============================================
+   TAILWIND DARK MODE OVERRIDES
+   ============================================ */
+/* These ensure the CSS variables work alongside Tailwind */
+.dark body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   LEGACY COMPATIBILITY (keep old class names working)
+   ============================================ */
+.paper-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.charcoal-card {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
